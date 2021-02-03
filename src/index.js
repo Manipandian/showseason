@@ -1,17 +1,60 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import reactDom from "react-dom";
+import DefineSeason from "./defineSeason";
+import Loader from "./loader";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+if(module.hot) {
+    module.hot.accept();
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+
+class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+        // this.state = {
+        //     lat: null,
+        //     long: null,
+        //     errMessage: null
+        // }
+    }
+    state = {
+        lat: null,
+        long: null,
+        errMessage: null
+    }
+
+    componentDidMount() {
+        window.navigator.geolocation.getCurrentPosition(
+            position => this.setState({lat: position.coords.latitude, long: position.coords.longitude}),
+            err => this.setState({errMessage: err.message})
+        )
+    }
+    componentDidUpdate() {
+        console.log("Component updated");
+    }
+
+    renderContent() {
+        if(!this.state.errMessage && this.state.lat) {
+            return (
+                <DefineSeason lat={this.state.lat}/>
+                )
+        }
+        if(!this.state.lat && this.state.errMessage) {
+            return <div>Error: {this.state.errMessage}</div>
+        }
+
+        return <Loader message="Please allow location access"/>
+    }
+
+    render() {
+      return (
+          <div>
+              {this.renderContent()}
+          </div>
+      )
+    } 
+}
+
+reactDom.render(<App/>, document.querySelector("#root"));

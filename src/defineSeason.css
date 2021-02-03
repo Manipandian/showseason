@@ -1,0 +1,44 @@
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+/* .define-season {
+    height: 100vh;
+} */
+
+.left-icon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.right-icon {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+.text-align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.winter {
+    background-color: aqua;
+}
+
+.summer {
+    background-color: orange;
+}
+
+.define-season.winter i {
+    color: blue;
+}
+
+.define-season.summer i {
+    color: red;
+}
+
+
