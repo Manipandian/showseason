@@ -3,6 +3,9 @@ import reactDom from "react-dom";
 import DefineSeason from "./defineSeason";
 import Loader from "./loader";
 
+
+// "homepage": "http://manipandian.github.io/showseason",
+
 if(module.hot) {
     module.hot.accept();
 }
