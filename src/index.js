@@ -10,15 +10,6 @@ if(module.hot) {
 
 
 class App extends React.Component {
-
-    constructor(props) {
-        super(props);
-        // this.state = {
-        //     lat: null,
-        //     long: null,
-        //     errMessage: null
-        // }
-    }
     state = {
         lat: null,
         long: null,

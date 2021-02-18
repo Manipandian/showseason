@@ -1,9 +1,7 @@
-import react from "react";
-
 const Loader = (props) => {
   return (
-    <div class="ui active dimmer">
-      <div class="ui indeterminate text loader">{props.message}</div>
+    <div className="ui active dimmer">
+      <div className="ui indeterminate text loader">{props.message}</div>
     </div>
   );
 };
